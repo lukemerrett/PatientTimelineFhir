@@ -1,4 +1,5 @@
 ﻿using RestClientForFHIR.Client;
+using RestClientForFHIR.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,9 @@ namespace RestClientForFHIR
     {
         static void Main(string[] args)
         {
-            var requestManager = new RequestManager();
+            var requestManager = new RequestManager(FormatEnum.Json);
 
-            dynamic responseJson = requestManager.SendSampleGetRequest(); 
+            var responseJson = requestManager.GetResourceById<OrganizationModel>(1); 
         }
     }
 }

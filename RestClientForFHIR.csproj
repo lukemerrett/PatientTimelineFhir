@@ -45,7 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client\FormatEnum.cs" />
     <Compile Include="Client\RequestManager.cs" />
+    <Compile Include="Client\ResponseResult.cs" />
+    <Compile Include="Client\ResultEnum.cs" />
+    <Compile Include="Model\OrganisationModel.cs" />
+    <Compile Include="Model\IFhirModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
