@@ -1,20 +1,29 @@
-﻿using RestClientForFHIR.Client;
-using RestClientForFHIR.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Hl7.Fhir.Client;
+using Hl7.Fhir.Model;
 
 namespace RestClientForFHIR
 {
     public class Program
     {
-        static void Main(string[] args)
+        public static string BaseUrl
         {
-            var requestManager = new RequestManager(FormatEnum.Json);
+            get
+            {
+                return ConfigurationManager.AppSettings["baseURL"];
+            }
+        }
 
-            var responseJson = requestManager.GetResourceById<OrganizationModel>(1); 
+        public static void Main(string[] args)
+        {
+            var client = new FhirClient(new Uri(BaseUrl));
+
+            var organisation = client.Read<Organization>("1");
         }
     }
 }

@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Hl7.Fhir">
+      <HintPath>packages\Hl7.Fhir.0.9.3\lib\net40\Hl7.Fhir.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -45,17 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client\FormatEnum.cs" />
-    <Compile Include="Client\RequestManager.cs" />
-    <Compile Include="Client\ResponseResult.cs" />
-    <Compile Include="Client\ResultEnum.cs" />
-    <Compile Include="Model\Children\Identifier.cs" />
-    <Compile Include="Model\OrganizationModel.cs" />
-    <Compile Include="Model\IFhirModel.cs" />
-    <Compile Include="Model\Children\PartOf.cs" />
-    <Compile Include="Model\Children\Telecom.cs" />
-    <Compile Include="Model\Children\ValueContainer.cs" />
-    <Compile Include="Model\Children\Text.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
