@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestClientForFHIR.Model.Children;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,14 +14,14 @@ namespace RestClientForFHIR.Model
 
     public class Organization
     {
-        public object Text { get; set; }
+        public Text Text { get; set; }
 
-        public object Identifier { get; set; }
+        public List<Identifier> Identifier { get; set; }
 
-        public object Name { get; set; }
+        public ValueContainer Name { get; set; }
 
-        public object Telecom { get; set; }
+        public List<Telecom> Telecom { get; set; }
 
-        public object PartOf { get; set; }
+        public PartOf PartOf { get; set; }
     }
 }

@@ -49,8 +49,13 @@
     <Compile Include="Client\RequestManager.cs" />
     <Compile Include="Client\ResponseResult.cs" />
     <Compile Include="Client\ResultEnum.cs" />
-    <Compile Include="Model\OrganisationModel.cs" />
+    <Compile Include="Model\Children\Identifier.cs" />
+    <Compile Include="Model\OrganizationModel.cs" />
     <Compile Include="Model\IFhirModel.cs" />
+    <Compile Include="Model\Children\PartOf.cs" />
+    <Compile Include="Model\Children\Telecom.cs" />
+    <Compile Include="Model\Children\ValueContainer.cs" />
+    <Compile Include="Model\Children\Text.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
