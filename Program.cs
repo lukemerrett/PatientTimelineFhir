@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Hl7.Fhir.Client;
 using Hl7.Fhir.Model;
+using RestClientForFHIR.Managers;
 
 namespace RestClientForFHIR
 {
@@ -21,47 +22,23 @@ namespace RestClientForFHIR
             }
         }
 
+        private static FhirClient Client
+        {
+            get
+            {
+                return new FhirClient(new Uri(BaseUrl));
+            }
+        }
+
         #endregion
 
         #region Public Methods
 
         public static void Main(string[] args)
         {
-            var client = new FhirClient(new Uri(BaseUrl));
+            var patientManager = new PatientManager(Client);
 
-            var patient = client.Read<Patient>("1");
-
-            var patientProvider = patient.Resource.Provider;
-
-            if (patientProvider.Type == typeof(Organization).Name)
-            {
-                var id = ExtractIdFromReference(patientProvider);
-
-                var patientOrganization = client.Read<Organization>(id);
-
-                var patientName = patient.Resource.Name.First();
-
-                Console.WriteLine(
-                    string.Format("Patient: {0} {1} - Provided By {1}\n", 
-                        string.Join(" ", patientName.Given),
-                        string.Join(" ", patientName.Family),
-                        patientOrganization.Resource.Name));
-
-                Console.WriteLine(string.Format("Narrative:\n\n{0}", patient.Resource.Text.Div));
-            }            
-
-            Console.ReadLine();
-        }
-
-        #endregion
-
-        #region Methods
-
-        private static string ExtractIdFromReference(ResourceReference resourceReference)
-        {
-            var atPosition = resourceReference.Reference.IndexOf('@');
-
-            return resourceReference.Reference.Substring(atPosition + 1);
+            var patients = patientManager.GetAllPatients();
         }
 
         #endregion
