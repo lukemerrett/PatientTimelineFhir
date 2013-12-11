@@ -37,15 +37,15 @@ namespace RestClientForFHIR
             {
                 var id = ExtractIdFromReference(patientProvider);
 
-                var patientOrganiszation = client.Read<Organization>(id);
+                var patientOrganization = client.Read<Organization>(id);
 
                 var patientName = patient.Resource.Name.First();
 
                 Console.WriteLine(
                     string.Format("Patient: {0} {1} - Provided By {1}\n", 
-                    string.Join(" ", patientName.Given),
-                    string.Join(" ", patientName.Family),
-                    patientOrganiszation.Resource.Name));
+                        string.Join(" ", patientName.Given),
+                        string.Join(" ", patientName.Family),
+                        patientOrganization.Resource.Name));
 
                 Console.WriteLine(string.Format("Narrative:\n\n{0}", patient.Resource.Text.Div));
             }            
