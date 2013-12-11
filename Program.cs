@@ -11,7 +11,9 @@ namespace RestClientForFHIR
 {
     public class Program
     {
-        public static string BaseUrl
+        #region Properties
+
+        private static string BaseUrl
         {
             get
             {
@@ -19,11 +21,49 @@ namespace RestClientForFHIR
             }
         }
 
+        #endregion
+
+        #region Public Methods
+
         public static void Main(string[] args)
         {
             var client = new FhirClient(new Uri(BaseUrl));
 
-            var organisation = client.Read<Organization>("1");
+            var patient = client.Read<Patient>("1");
+
+            var patientProvider = patient.Resource.Provider;
+
+            if (patientProvider.Type == typeof(Organization).Name)
+            {
+                var id = ExtractIdFromReference(patientProvider);
+
+                var patientOrganiszation = client.Read<Organization>(id);
+
+                var patientName = patient.Resource.Name.First();
+
+                Console.WriteLine(
+                    string.Format("Patient: {0} {1} - Provided By {1}\n", 
+                    string.Join(" ", patientName.Given),
+                    string.Join(" ", patientName.Family),
+                    patientOrganiszation.Resource.Name));
+
+                Console.WriteLine(string.Format("Narrative:\n\n{0}", patient.Resource.Text.Div));
+            }            
+
+            Console.ReadLine();
         }
+
+        #endregion
+
+        #region Methods
+
+        private static string ExtractIdFromReference(ResourceReference resourceReference)
+        {
+            var atPosition = resourceReference.Reference.IndexOf('@');
+
+            return resourceReference.Reference.Substring(atPosition + 1);
+        }
+
+        #endregion
     }
 }
