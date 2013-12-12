@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RestClientForFHIR.Managers
 {
-    public class PatientManager : IPatientManager
+    internal class PatientManager : IPatientManager
     {
         private FhirClient _client;
 

@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 namespace PatientTimelineFhir.IntegrationTests
 {
     [TestClass()]
-    public class TimelineManagerTests
+    public class TimelineBuilderTests
     {
         #region Fields
 
         private IPatientManager _patientManager;
 
-        private ITimelineManager _timelineManager;
+        private ITimelineBuilder _timelineBuilder;
 
         #endregion
 
@@ -39,7 +39,7 @@ namespace PatientTimelineFhir.IntegrationTests
         public void TestSetUp()
         {
             var client = new FhirClient(new Uri(BaseUrl));
-            _timelineManager = new TimelineManager(client);
+            _timelineBuilder = new TimelineBuilder(client);
             _patientManager = new PatientManager(client);
         }
 
@@ -66,7 +66,7 @@ namespace PatientTimelineFhir.IntegrationTests
                 Assert.Fail("The patient does not have an associated identifier.");
             }
 
-            var timeline = _timelineManager.GetTimelineForPatient(patientIdentifier.Key);
+            var timeline = _timelineBuilder.GetTimelineForPatient(patientIdentifier.Key);
 
             Assert.IsNotNull(timeline);
         }

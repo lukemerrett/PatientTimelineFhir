@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace RestClientForFHIR.Managers
 {
-    public class TimelineManager : ITimelineManager
+    internal class TimelineBuilder : ITimelineBuilder
     {
         private FhirClient _client;
 
-        public TimelineManager(FhirClient client)
+        public TimelineBuilder(FhirClient client)
         {
             _client = client;
         }

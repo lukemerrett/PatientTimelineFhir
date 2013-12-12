@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace RestClientForFHIR.Managers
 {
-    public interface ITimelineManager
+    internal interface ITimelineBuilder
     {
         IEnumerable<TimelineEntry> GetTimelineForPatient(string patientIdentifier);
     }

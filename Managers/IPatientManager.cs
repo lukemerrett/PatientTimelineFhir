@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RestClientForFHIR.Managers
 {
-    public interface IPatientManager
+    internal interface IPatientManager
     {
         IEnumerable<Patient> GetAllPatients();
 
