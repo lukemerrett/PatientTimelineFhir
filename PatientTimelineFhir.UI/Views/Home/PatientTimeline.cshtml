@@ -5,3 +5,34 @@
 @model RestClientForFHIR.Dtos.PatientTimeline
 
 <h2>@ViewBag.Title</h2>
+
+<div class="content">
+    <div class="patient-full-name">
+        Patient: 
+        @Html.DisplayFor(x => x.PatientGivenName) 
+        @Html.DisplayFor(x => x.PatientFamilyName) 
+    </div>
+
+    <div class="patient-timeline">
+        @foreach (var entry in Model.Timeline)
+        {
+            <div class="timeline-entry">
+                <div class="field">
+                    <div class="label">Period: </div>
+                    <div class="time-period">
+                        @string.Format("{0:yyyy/MM/dd HH:mm} - {0:yyyy/MM/dd HH:mm}", entry.StartTime, @entry.EndTime)
+                    </div>
+                </div>
+                
+                <div class="field">
+                    <div class="label">Summary: </div>
+                    <div class="summary">
+                        @entry.Summary
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@Html.ActionLink("Return to Search Form", "Index")

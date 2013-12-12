@@ -68,3 +68,25 @@ div.content {
     margin-left:25px;
     margin-top:25px;
 }
+
+div.patient-full-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+div.fields {
+    margin-top:15px
+}
+
+div.field {
+    clear: both;
+}
+
+div.label {
+    float: left;
+    width: 100px;
+}
+
+div.timeline-entry {
+    margin-bottom: 10px;
+}
