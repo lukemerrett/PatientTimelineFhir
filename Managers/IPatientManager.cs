@@ -11,8 +11,8 @@ namespace RestClientForFHIR.Managers
 {
     public interface IPatientManager
     {
-        IEnumerable<ResourceEntry<Patient>> GetAllPatients();
+        IEnumerable<Patient> GetAllPatients();
 
-        IEnumerable<ResourceEntry<Patient>> GetPatientsByName(string firstName, string lastName);
+        IEnumerable<Patient> GetPatientsByName(string firstName, string lastName);
     }
 }

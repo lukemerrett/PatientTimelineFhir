@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\TimelineEntry.cs" />
+    <Compile Include="Dtos\TimelineEntryType.cs" />
     <Compile Include="Managers\TimelineManager.cs" />
     <Compile Include="Managers\ITimelineManager.cs" />
     <Compile Include="Managers\IPatientManager.cs" />

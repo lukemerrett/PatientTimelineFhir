@@ -12,6 +12,6 @@ namespace RestClientForFHIR.Managers
 {
     public interface ITimelineManager
     {
-        IEnumerable<TimelineEntry> GetTimelineForPatient(Uri patientId);
+        IEnumerable<TimelineEntry> GetTimelineForPatient(string patientIdentifier);
     }
 }

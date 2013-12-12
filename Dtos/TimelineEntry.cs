@@ -8,5 +8,12 @@ namespace RestClientForFHIR.Dtos
 {
     public class TimelineEntry
     {
+        public DateTimeOffset? StartTime { get; set; }
+
+        public DateTimeOffset? EndTime { get; set; }
+
+        public TimelineEntryType TypeOfEntry { get; set; }
+
+        public string Summary { get; set; }
     }
 }

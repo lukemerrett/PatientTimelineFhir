@@ -56,10 +56,17 @@ namespace PatientTimelineFhir.IntegrationTests
 
             if (patient == null)
             {
-                    Assert.Fail("Could not find a patient to get the timeline for.");
+                Assert.Fail("Could not find a patient to get the timeline for.");
             }
 
-            var timeline = _timelineManager.GetTimelineForPatient(patient.Id);
+            var patientIdentifier = patient.Identifier.FirstOrDefault();
+
+            if (patientIdentifier == null)
+            {
+                Assert.Fail("The patient does not have an associated identifier.");
+            }
+
+            var timeline = _timelineManager.GetTimelineForPatient(patientIdentifier.Key);
 
             Assert.IsNotNull(timeline);
         }
