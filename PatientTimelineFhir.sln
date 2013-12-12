@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientTimelineFhir", "PatientTimelineFhir.csproj", "{01298139-5768-4D01-A24A-7232D336F8C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientTimelineFhir.Application", "PatientTimelineFhir.Application.csproj", "{01298139-5768-4D01-A24A-7232D336F8C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientTimelineFhir.IntegrationTests", "PatientTimelineFhir.IntegrationTests\PatientTimelineFhir.IntegrationTests.csproj", "{828560DA-09F6-4E2A-8BB0-C4F943AB9699}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{01298139-5768-4D01-A24A-7232D336F8C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01298139-5768-4D01-A24A-7232D336F8C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01298139-5768-4D01-A24A-7232D336F8C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{828560DA-09F6-4E2A-8BB0-C4F943AB9699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{828560DA-09F6-4E2A-8BB0-C4F943AB9699}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{828560DA-09F6-4E2A-8BB0-C4F943AB9699}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{828560DA-09F6-4E2A-8BB0-C4F943AB9699}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
