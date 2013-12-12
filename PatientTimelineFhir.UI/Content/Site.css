@@ -59,3 +59,12 @@ textarea {
 .validation-summary-valid {
     display: none;
 }
+
+
+/* Home page
+-----------------------------------------------------------*/
+
+div.content {
+    margin-left:25px;
+    margin-top:25px;
+}

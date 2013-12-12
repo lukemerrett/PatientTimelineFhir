@@ -1,6 +1,7 @@
 ﻿using RestClientForFHIR.Managers;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,16 +10,22 @@ namespace PatientTimelineFhir.UI.Controllers
 {
     public class HomeController : Controller
     {
-        private IPatientManager _patientManager;
+        private readonly ITimelineManager _timelineManager;
 
-        private ITimelineManager _timelineManager;
-
-        public HomeController(IPatientManager patientManager, ITimelineManager timelineManager)
+        public HomeController()
         {
-            _patientManager = patientManager;
-            _timelineManager = timelineManager;
+            var baseUrl = ConfigurationManager.AppSettings["Fhir.Api.Base.Url"];
+            _timelineManager = new TimelineManager(baseUrl);
         }
 
+        [HttpPost]
+        public ActionResult PatientTimeline(string givenName, string familyName)
+        {
+            var timeline = _timelineManager.GetTimelineForPatient(givenName, familyName);
+            return View(timeline);
+        }
+
+        [HttpGet]
         public ActionResult Index()
         {
             return View();

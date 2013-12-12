@@ -24,7 +24,7 @@ namespace RestClientForFHIR.Managers
 
         public PatientTimeline GetTimelineForPatient(string givenName, string familyName)
         {
-            var patients = _patientManager.GetPatientsByName("Roelof Olaf", "Bor");
+            var patients = _patientManager.GetPatientsByName(givenName, familyName);
 
             if (!patients.Any())
             {

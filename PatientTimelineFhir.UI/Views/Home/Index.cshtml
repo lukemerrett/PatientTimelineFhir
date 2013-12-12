@@ -4,3 +4,25 @@
 
 <h2>@ViewBag.Title</h2>
 
+<div class="content">
+    @using (Html.BeginForm("PatientTimeline", "Home", FormMethod.Post))
+    {
+        <h3>Enter user to retrive the timeline for</h3>
+
+        <p>(For example: "Roelof Olaf", "Bor")</p>
+
+        <fieldset>
+            <div class="fields">
+                <div class="field given-name">
+                    <div class="label">Given Name:</div>
+                    <div class="value">@Html.TextBox("givenName")</div>
+                </div>
+                <div class="field family-name">
+                    <div class="label">Family Name:</div>
+                    <div class="value">@Html.TextBox("familyName")</div>
+                </div>
+            </div>
+            <input type="submit" value="Get Timeline" />
+        </fieldset>
+    }
+</div>
