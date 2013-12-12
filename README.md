@@ -8,9 +8,7 @@ This uses the __Hl7.Fhir__ NuGet package provided by Ewout Kramer ([See here for
 Dependencies
 --------------------------
 
-ASP.NET C# MVC 4.5
-
-NuGet
-
- * Hl7.Fhir
-* Newtonsoft.Json
+* ASP.NET C# MVC 4.5
+* NuGet
+    * Hl7.Fhir
+    * Newtonsoft.Json
