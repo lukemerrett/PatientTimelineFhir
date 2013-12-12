@@ -18,9 +18,9 @@ namespace RestClientForFHIR.Managers
             _client = client;
         }
 
-        public List<Patient> GetAllPatients()
+        public IEnumerable<ResourceEntry<Patient>> GetAllPatients()
         {
-            var patients = new List<Patient>();
+            var patients = new List<ResourceEntry<Patient>>();
 
             var patientsExist = true;
             var i = 1;
@@ -31,7 +31,7 @@ namespace RestClientForFHIR.Managers
                 {
                     var patient = _client.Read<Patient>(i.ToString());
 
-                    patients.Add(patient.Resource);
+                    patients.Add(patient);
 
                     i++;
                 }
@@ -44,7 +44,7 @@ namespace RestClientForFHIR.Managers
             return patients;
         }
 
-        public IEnumerable<Patient> GetPatientsByName(string firstName, string lastName)
+        public IEnumerable<ResourceEntry<Patient>> GetPatientsByName(string firstName, string lastName)
         {
             var searchParameters = new[]
                 {
@@ -61,7 +61,7 @@ namespace RestClientForFHIR.Managers
 
             }
 
-            return result.Entries.Select(x => (ResourceEntry<Patient>)x).Select(x => x.Resource);
+            return result.Entries.Select(x => (ResourceEntry<Patient>)x);
         }
     }
 }

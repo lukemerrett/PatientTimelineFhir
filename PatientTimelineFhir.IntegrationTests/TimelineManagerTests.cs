@@ -11,11 +11,13 @@ using System.Threading.Tasks;
 namespace PatientTimelineFhir.IntegrationTests
 {
     [TestClass()]
-    public class PatientManagerTests
+    public class TimelineManagerTests
     {
         #region Fields
 
         private IPatientManager _patientManager;
+
+        private ITimelineManager _timelineManager;
 
         #endregion
 
@@ -37,6 +39,7 @@ namespace PatientTimelineFhir.IntegrationTests
         public void TestSetUp()
         {
             var client = new FhirClient(new Uri(BaseUrl));
+            _timelineManager = new TimelineManager(client);
             _patientManager = new PatientManager(client);
         }
 
@@ -45,19 +48,20 @@ namespace PatientTimelineFhir.IntegrationTests
         #region Tests
 
         [TestMethod()]
-        public void Ensure_GetAllPatients_returns_a_patient_list()
+        public void Ensure_GetTimelineForPatient_returns_a_timeline_for_patient()
         {
-            var patients = _patientManager.GetAllPatients();
+            var patients = _patientManager.GetPatientsByName("Roelof Olaf", "Bor");
 
-            Assert.IsTrue(patients.Any());
-        }
+            var patient = patients.FirstOrDefault();
 
-        [TestMethod()]
-        public void Ensure_GetPatientsByName_returns_matching_patients()
-        {
-            var result = _patientManager.GetPatientsByName("Adam", "Everyman");
+            if (patient == null)
+            {
+                    Assert.Fail("Could not find a patient to get the timeline for.");
+            }
 
-            Assert.IsTrue(result.Any());
+            var timeline = _timelineManager.GetTimelineForPatient(patient.Id);
+
+            Assert.IsNotNull(timeline);
         }
 
         #endregion

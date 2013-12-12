@@ -1,6 +1,7 @@
 ﻿using Hl7.Fhir.Client;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Support.Search;
+using RestClientForFHIR.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,8 @@ using System.Threading.Tasks;
 
 namespace RestClientForFHIR.Managers
 {
-    public interface IPatientManager
+    public interface ITimelineManager
     {
-        IEnumerable<ResourceEntry<Patient>> GetAllPatients();
-
-        IEnumerable<ResourceEntry<Patient>> GetPatientsByName(string firstName, string lastName);
+        IEnumerable<TimelineEntry> GetTimelineForPatient(Uri patientId);
     }
 }

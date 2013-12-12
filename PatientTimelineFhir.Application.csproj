@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\TimelineEntry.cs" />
+    <Compile Include="Managers\TimelineManager.cs" />
+    <Compile Include="Managers\ITimelineManager.cs" />
     <Compile Include="Managers\IPatientManager.cs" />
     <Compile Include="Managers\PatientManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
